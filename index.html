@@ -78,7 +78,7 @@
                     </div>
                     <img src="images/cupon-devider.png" class="mx-auto" alt="">
                     <div class="flex flex-col font-raleway m-[64px] items-center">
-                        <h3 class="text-2xl font-bold">NEW15</h3>
+                        <h3 class="text-2xl font-bold" id="coupon-code1">NEW15</h3>
                         <p class="text-[#03071226] font-bold">Coupon Code</p>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                     </div>
                     <img src="images/cupon-devider.png" class="mx-auto" alt="">
                     <div class="flex flex-col font-raleway m-[64px] items-center">
-                        <h3 class="text-2xl font-bold">Couple 20</h3>
+                        <h3 class="text-2xl font-bold" id="coupon-code2">Couple 20</h3>
                         <p class="text-[#03071226] font-bold">Coupon Code</p>
                     </div>
                 </div>
@@ -244,14 +244,7 @@
                                                         <th>Price</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <!-- row 1 -->
-                                                    <!-- <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>Blue</td>
-                                                    </tr> -->
-                                                    
+                                                <tbody id="adding-new-row">
                                                 </tbody>
                                                 
                                             </table>
@@ -259,18 +252,18 @@
                                         <hr>
                                         <div class="mx-6 flex justify-between pt-3 font-bold w-[349px] mb-5">
                                             <p>Total Price</p>
-                                            <p>BDT <span>0</span></p>
+                                            <p>BDT <span id="total-price">0</span></p>
                                         </div>
                                     </div>
                                     <!-- Input Form -->
-                                    <div class="flex justify-center items-center m-auto">
-                                        <input type="text" class="w-[379px] rounded-xl p-4" placeholder="Have any Coupon?">
-                                        <button class="btn rounded-xl absolute lg:right-[470px] text-white bg-[#1DD100]" disabled>Apply</button>
+                                    <div id="coupon-part" class="flex justify-center items-center m-auto coupon-button">
+                                        <input id="coupon-place" type="text" class="w-[379px] rounded-xl p-4" placeholder="Have any Coupon?">
+                                        <button onclick="getCoupon()" id="disable-button" class="btn rounded-xl absolute lg:right-[470px] text-white bg-[#1DD100]" disabled>Apply</button>
                                     </div>
                                     <!-- Grand Total -->
                                     <div class="mx-6 flex justify-between pt-3 font-bold w-[349px] mb-5">
                                         <p>Grand Total</p>
-                                        <p>BDT <span>0</span></p>
+                                        <p>BDT <span id="grand-total-price">0</span></p>
                                     </div>
                                     <div>
                                         <form action="" class="font-inter w-full">

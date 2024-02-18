@@ -16,10 +16,63 @@ for (const btn of allButtons) {
       count2 = count2 - 1;
 
       buttonInner.push(btn.innerText);
-      console.log(buttonInner);
+      // console.log(buttonInner);
       setInnerText("seat-booked", count1);
       setInnerText("per-seat", count2);
       setBackgroundColor(btn);
+
+      const seatName = btn.innerText;
+
+      const addingNewRow = document.getElementById("adding-new-row");
+      const tr = document.createElement("tr");
+      const td1 = document.createElement("td");
+      td1.innerText = seatName;
+      const td2 = document.createElement("td");
+      td2.innerText = "Economy";
+      const td3 = document.createElement("td");
+      td3.innerText = parseInt(550);
+
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      tr.appendChild(td3);
+
+      addingNewRow.appendChild(tr);
+
+      document.getElementById("total-price").innerText = count1 * 550;
+      const grandTotal = document.getElementById("grand-total-price").innerText;
+      const grandTotalVal = parseInt(grandTotal);
+      console.log(grandTotal);
+
+      document
+        .getElementById("disable-button")
+        .addEventListener("click", function getTheCoupon() {
+          console.log("Got coupon");
+          if (couponPlace === couponCode1) {
+            document.getElementById("grand-total-price").innerText = Math.floor(
+              count1 * 550 - count1 * 550 * 0.15
+            );
+            hideCoupon("coupon-part");
+          }
+          if (couponPlace === couponCode2) {
+            document.getElementById("grand-total-price").innerText = Math.floor(
+              count1 * 550 - count1 * 550 * 0.2
+            );
+            hideCoupon("coupon-part");
+          }
+        });
     }
   });
 }
+
+let couponPlace;
+
+function getCoupon() {
+  couponPlace = document.getElementById("coupon-place").value.toLowerCase();
+  couponCode1 = document.getElementById("coupon-code1").innerText.toLowerCase();
+  couponCode2 = document.getElementById("coupon-code2").innerText.toLowerCase();
+
+  if (couponPlace === couponCode1 || couponPlace === couponCode2) {
+    document.getElementById("disable-button").disabled = false;
+  }
+}
+document.getElementById("coupon-place").addEventListener("input", getCoupon);
