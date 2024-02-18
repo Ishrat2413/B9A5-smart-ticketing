@@ -20,6 +20,7 @@ for (const btn of allButtons) {
       setInnerText("seat-booked", count1);
       setInnerText("per-seat", count2);
       setBackgroundColor(btn);
+      setTextColor(btn);
 
       const seatName = btn.innerText;
 
@@ -39,14 +40,11 @@ for (const btn of allButtons) {
       addingNewRow.appendChild(tr);
 
       document.getElementById("total-price").innerText = count1 * 550;
-      const grandTotal = document.getElementById("grand-total-price").innerText;
-      const grandTotalVal = parseInt(grandTotal);
-      console.log(grandTotal);
 
       document
         .getElementById("disable-button")
         .addEventListener("click", function getTheCoupon() {
-          console.log("Got coupon");
+          // console.log("Got coupon")
           if (couponPlace === couponCode1) {
             document.getElementById("grand-total-price").innerText = Math.floor(
               count1 * 550 - count1 * 550 * 0.15
@@ -60,19 +58,50 @@ for (const btn of allButtons) {
             hideCoupon("coupon-part");
           }
         });
+
+      const inputNumber = document.getElementById("input-number");
+
+      inputNumber.addEventListener("input", function () {
+        const phoneNumber = inputNumber.value;
+
+        if (phoneNumber.length === 0) {
+          document.getElementById("next-disabled").disabled = true;
+        } else {
+          document.getElementById("next-disabled").disabled = false;
+        }
+      });
     }
   });
 }
 
+// Coupon
 let couponPlace;
-
+let couponCode1;
+let couponCode2;
 function getCoupon() {
   couponPlace = document.getElementById("coupon-place").value.toLowerCase();
   couponCode1 = document.getElementById("coupon-code1").innerText.toLowerCase();
   couponCode2 = document.getElementById("coupon-code2").innerText.toLowerCase();
 
-  if (couponPlace === couponCode1 || couponPlace === couponCode2) {
+  if (
+    (couponPlace === couponCode1 || couponPlace === couponCode2) &&
+    count1 === 4
+  ) {
     document.getElementById("disable-button").disabled = false;
+  } else {
+    document.getElementById("disable-button").disabled = true;
   }
 }
 document.getElementById("coupon-place").addEventListener("input", getCoupon);
+// Form Fillup
+
+// function nextButtonHandler() {
+//   const phoneNumber = document.getElementById("input-number").value;
+//   const nextButton = document.getElementById("next-disabled");
+
+//   if (phoneNumber.length === 0) {
+//     nextButton.disabled = true;
+//   } else {
+//     nextButton.disabled = false;
+//   }
+// }
