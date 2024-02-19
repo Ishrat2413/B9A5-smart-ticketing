@@ -41,6 +41,7 @@ for (const btn of allButtons) {
 
       document.getElementById("total-price").innerText = count1 * 550;
 
+      document.getElementById("grand-total-price").innerText = count1 * 550;
       document
         .getElementById("disable-button")
         .addEventListener("click", function getTheCoupon() {
@@ -93,15 +94,3 @@ function getCoupon() {
   }
 }
 document.getElementById("coupon-place").addEventListener("input", getCoupon);
-// Form Fillup
-
-// function nextButtonHandler() {
-//   const phoneNumber = document.getElementById("input-number").value;
-//   const nextButton = document.getElementById("next-disabled");
-
-//   if (phoneNumber.length === 0) {
-//     nextButton.disabled = true;
-//   } else {
-//     nextButton.disabled = false;
-//   }
-// }
